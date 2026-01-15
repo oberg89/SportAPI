@@ -14,9 +14,9 @@ import java.util.List;
 
 public class TeamController {
 
-    private TeamService teamService;
+    private final TeamService teamService;
 
-@PostMapping
+    @PostMapping
     public Team createTeam(@RequestBody CreateTeamRequest request) {
         return teamService.createTeam(request);
     }
