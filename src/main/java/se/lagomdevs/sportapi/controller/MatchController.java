@@ -31,9 +31,10 @@ public class MatchController {
     }
 
     @GetMapping("/view")
-    public ResponseEntity<List<MatchViewDto>> getMatchView() {
-        return ResponseEntity.ok(matchService.getMatchView());
+    public List<MatchViewDto> getMatchView() {
+        return matchService.getMatchView();
     }
+
 
 
     @PutMapping("/{id}/result")
