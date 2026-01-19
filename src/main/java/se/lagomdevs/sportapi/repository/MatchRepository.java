@@ -1,14 +1,24 @@
 package se.lagomdevs.sportapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import se.lagomdevs.sportapi.dto.MatchViewDto;
 import se.lagomdevs.sportapi.model.Match;
 
 import java.util.List;
 
-@Repository
-
 public interface MatchRepository extends JpaRepository<Match, Long> {
 
-    List<Match> findByHomeTeamIdOrAwayTeamId(Long homeTeamId, Long awayTeamId);
+    @Query("""
+        SELECT new se.lagomdevs.sportapi.dto.MatchViewDto(
+            m.id,
+            m.homeTeam.name,
+            m.awayTeam.name,
+            m.homeScore,
+            m.awayScore,
+            m.played
+        )
+        FROM Match m
+    """)
+    List<MatchViewDto> findMatchView();
 }

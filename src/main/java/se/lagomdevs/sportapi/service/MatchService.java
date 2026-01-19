@@ -7,6 +7,8 @@ import se.lagomdevs.sportapi.dto.UpdateMatchResultRequest;
 import se.lagomdevs.sportapi.model.Match;
 import se.lagomdevs.sportapi.repository.MatchRepository;
 import se.lagomdevs.sportapi.repository.TeamRepository;
+import se.lagomdevs.sportapi.dto.MatchViewDto;
+
 
 import java.util.List;
 
@@ -56,5 +58,10 @@ public class MatchService {
         return matchRepository.save(match);
 
     }
+
+    public List<MatchViewDto> getMatchView() {
+        return matchRepository.findMatchView();
+    }
+
 
 }

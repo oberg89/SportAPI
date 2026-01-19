@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.lagomdevs.sportapi.dto.CreateMatchRequest;
+import se.lagomdevs.sportapi.dto.MatchViewDto;
 import se.lagomdevs.sportapi.dto.UpdateMatchResultRequest;
 import se.lagomdevs.sportapi.model.Match;
 import se.lagomdevs.sportapi.service.MatchService;
@@ -28,6 +29,12 @@ public class MatchController {
     public ResponseEntity<List<Match>> getMatches(){
         return ResponseEntity.ok(matchService.getAllMatches());
     }
+
+    @GetMapping("/view")
+    public ResponseEntity<List<MatchViewDto>> getMatchView() {
+        return ResponseEntity.ok(matchService.getMatchView());
+    }
+
 
     @PutMapping("/{id}/result")
     public ResponseEntity<Match> updateResult(
