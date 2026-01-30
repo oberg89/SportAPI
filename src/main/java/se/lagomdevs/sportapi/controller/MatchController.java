@@ -30,6 +30,11 @@ public class MatchController {
         return ResponseEntity.ok(matchService.getAllMatches());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Match> getMatchById(@PathVariable Long id) {
+        return ResponseEntity.ok(matchService.getMatchById(id));
+    }
+
     @GetMapping("/view")
     public List<MatchViewDto> getMatchView() {
         return matchService.getMatchView();

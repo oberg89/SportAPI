@@ -2,6 +2,7 @@ package se.lagomdevs.sportapi.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import se.lagomdevs.sportapi.dto.CreateMatchRequest;
 import se.lagomdevs.sportapi.dto.UpdateMatchResultRequest;
 import se.lagomdevs.sportapi.model.Match;
@@ -9,6 +10,7 @@ import se.lagomdevs.sportapi.repository.MatchRepository;
 import se.lagomdevs.sportapi.repository.TeamRepository;
 import se.lagomdevs.sportapi.dto.MatchViewDto;
 
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 import java.util.List;
 
@@ -41,6 +43,11 @@ public class MatchService {
 
     public List<Match> getAllMatches(){
         return matchRepository.findAll();
+    }
+
+    public Match getMatchById(Long matchId) {
+        return matchRepository.findById(matchId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Match finns inte"));
     }
 
     public Match updateResult(Long matchId, UpdateMatchResultRequest request) {

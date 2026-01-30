@@ -1,0 +1,23 @@
+meta {
+  name: Skapa lag
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/teams
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "utsikten"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

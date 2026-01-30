@@ -1,0 +1,24 @@
+meta {
+  name: Uppdatera matchresultat
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:8080/matches/2/result
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "homeScore": 0,
+    "awayScore": 1
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

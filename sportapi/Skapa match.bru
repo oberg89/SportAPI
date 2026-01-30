@@ -1,0 +1,24 @@
+meta {
+  name: Skapa match
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/matches
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "homeTeamId": 3,
+    "awayTeamId": 4
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
